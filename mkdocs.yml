@@ -6,3 +6,4 @@ nav:
    - other_panels.md
    - merge_visible.md
 theme: mkdocs
+use_directory_urls: false

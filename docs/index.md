@@ -8,7 +8,7 @@ PBR Painter is currently available on <a href="https://blendermarket.com/product
 
 ## Documentation Layout
 
-The panel on the left contains everything you'll need to get started with PBR Painter and to use as a reference while you work. 
+The panel at the top of the screen contains everything you'll need to get started with PBR Painter and to use as a reference while you work. 
 
 ## Instructional Videos and Demos
 

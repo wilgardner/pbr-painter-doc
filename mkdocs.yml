@@ -1,6 +1,6 @@
 site_name: PBR Painter
 nav:
-   - overview.md
+   - index.md
    - getting_started.md
    - addon_UI.md
    - other_panels.md

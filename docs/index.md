@@ -10,7 +10,7 @@ PBR Painter is currently available on <a href="https://blendermarket.com/product
 
 The panel at the top of the screen contains everything you'll need to get started with PBR Painter and to use as a reference while you work. 
 
-## Instructional Videos and Demos
+## Instructional Video
 
 This documentation is complementary to the official PBR Painter overview/instructional video that is available. It is recommended that
 you watch the instructional video in addition to (or at the least, instead of) reading this documentation.

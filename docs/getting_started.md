@@ -23,7 +23,7 @@ In other words, the mesh must first be UV unwrapped using whichever method you p
 to be added, which can be done within PBR Painter's UI. Once this is done, you are ready to start adding PBR Layers
 and painting your PBR texture!
 
-## Import Considerations (PLEASE READ)
+## Important Considerations (PLEASE READ)
 
 There are a few things to consider before getting started as these will have a considerable impact on your experience with PBR Painter:
 

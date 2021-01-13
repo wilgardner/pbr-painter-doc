@@ -1,0 +1,7 @@
+site_name: PBR Painter
+nav:
+   - overview.md
+   - getting_started.md
+   - addon_UI.md
+   - other_panels.md
+   - merge_visible.md

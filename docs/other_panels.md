@@ -1,4 +1,4 @@
-# Other UI Panels
+# UI Sub-Panels
 
 ## Texture Maps
 

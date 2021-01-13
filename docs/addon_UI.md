@@ -31,5 +31,5 @@ material.
 - __Save images__: Saves all modified masks to the .blend file. This is important to avoid any loss of work due to unexpected crashes etc.
 
 In addition to these tools, there are also 5 sub-panels which constitute the remainder of the addon: __Texture Maps__, __Texture Mapping__, __Layer Settings__, 
-__Other Principled BSDF Inputs__ and __Deleted Layers__. The following sections in this documentation describe what is in these sub-panels in PBR Painter and 
+__Other Principled BSDF Inputs__ and __Deleted Layers__. The following sections in this documentation describe what is in these sub-panels and 
 their various functionalities/purposes. __The following sections will be most useful as a reference while you are using the addon.__

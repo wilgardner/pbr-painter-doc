@@ -5,3 +5,4 @@ nav:
    - addon_UI.md
    - other_panels.md
    - merge_visible.md
+theme: mkdocs

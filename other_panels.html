@@ -7,15 +7,15 @@
         
         
         
-        <link rel="shortcut icon" href="../img/favicon.ico">
+        <link rel="shortcut icon" href="img/favicon.ico">
         <title>Other UI Panels - PBR Painter</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
 
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">PBR Painter</a>
+                <a class="navbar-brand" href=".">PBR Painter</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -34,19 +34,19 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href=".." class="nav-link">Overview</a>
+                                <a href="index.html" class="nav-link">Overview</a>
                             </li>
                             <li class="navitem">
-                                <a href="../getting_started/" class="nav-link">Getting Started</a>
+                                <a href="getting_started.html" class="nav-link">Getting Started</a>
                             </li>
                             <li class="navitem">
-                                <a href="../addon_UI/" class="nav-link">Understanding the Main UI Panel</a>
+                                <a href="addon_UI.html" class="nav-link">Understanding the Main UI Panel</a>
                             </li>
                             <li class="navitem active">
-                                <a href="./" class="nav-link">Other UI Panels</a>
+                                <a href="other_panels.html" class="nav-link">Other UI Panels</a>
                             </li>
                             <li class="navitem">
-                                <a href="../merge_visible/" class="nav-link">Merge Visible</a>
+                                <a href="merge_visible.html" class="nav-link">Merge Visible</a>
                             </li>
                         </ul>
 
@@ -57,12 +57,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../addon_UI/" class="nav-link">
+                                <a rel="prev" href="addon_UI.html" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../merge_visible/" class="nav-link">
+                                <a rel="next" href="merge_visible.html" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -117,27 +117,27 @@
 <h2 id="texture-maps">Texture Maps</h2>
 <p>Here you can import any combination of PBR texture flat maps, including <strong>albedo/base color</strong>, <strong>metallic</strong>, <strong>roughness</strong>, 
 <strong>normals</strong>, <strong>height</strong>, <strong>alpha</strong> and/or <strong>ambient occlusion (AO)</strong>:</p>
-<p><img alt="Screenshot" src="../img/texture_maps.png" /></p>
+<p><img alt="Screenshot" src="img/texture_maps.png" /></p>
 <p>Alternatively, or in combination with these maps, you can also select a single value for the <strong>base color</strong>, <strong>metallic</strong>, 
 <strong>roughness</strong> and/or <strong>height</strong>.</p>
 <p>Ticking a checkbox will allow you to import your map from its directory:</p>
-<p><img alt="Screenshot" src="../img/texture_maps_1.png" /></p>
+<p><img alt="Screenshot" src="img/texture_maps_1.png" /></p>
 <p>Once a map is imported, you have access to all of the various properties associated with a normal <strong>image texture</strong> node. Note
 that you will need to change the <strong>color space</strong> to <strong>non-color</strong> if necessary (e.g. for roughness, normals etc.):</p>
-<p><img alt="Screenshot" src="../img/texture_maps_2.png" /></p>
+<p><img alt="Screenshot" src="img/texture_maps_2.png" /></p>
 <p>Once you are happy with your imported maps and/or values for other PBR components, this panel can be closed to clean up the UI.</p>
 <p>Now, you are ready to check out the <strong>Texture Mapping</strong> panel.</p>
 <h2 id="texture-mapping">Texture Mapping</h2>
 <p>This panel allows you to change the <strong>scale</strong>, <strong>location</strong> (in the <em>x</em> and <em>y</em> directions) and the <strong>rotation</strong> of any imported PBR
 texture maps:</p>
-<p><img alt="Screenshot" src="../img/texture_mapping.png" /></p>
+<p><img alt="Screenshot" src="img/texture_mapping.png" /></p>
 <p>Note that if no maps are imported you will be prompted that this panel is not applicable.</p>
 <p>Play around with these values to get the mapping that works for you, then you are ready to check out the panel you will probably use most often: the <strong>Layer Settings</strong> panel.</p>
 <h2 id="layer-settings">Layer Settings</h2>
 <p>You will probably spend most of your time within this panel while you are fine-tuning your texture. Here is where you will find the most powerful tools that will let you create ultra
 realistic textures that can be tuned to look just right.</p>
 <p>This is what the panel looks like:</p>
-<p><img alt="Screenshot" src="../img/layer_settings.png" /></p>
+<p><img alt="Screenshot" src="img/layer_settings.png" /></p>
 <p>Firstly, you can access the <strong>opacities</strong> of each of the PBR components you specified earlier in <strong>Texture Maps</strong>. Note that this is the opacity of <em>this layer</em> with respect to the 
 other layers beneath it. Therefore, these sliders are <em>extremely</em> powerful for letting you merge each component individually with those of the underlying layers.</p>
 <p>You will also notice a <strong>Combine Normals</strong> checkbox. As the name suggests, this lets you combine the normals of the current layer with those underneath, using a mathematically-derived
@@ -146,9 +146,9 @@ combine them all into a single normal map for your texture, which will retain al
 <p>Finally, you can also set the <strong>Height Scale</strong>, <strong>Height Midlevel</strong> and the <strong>AO Strength</strong> here, which are only applicable if you use a non-zero height (or a height map) or an 
 AO map for the layer, respectively.</p>
 <p>As an example, the following settings were used (in the moss layer) to generate this moss-covered rock texture:</p>
-<p><img alt="Screenshot" src="../img/layer_settings_example_1.png" /></p>
+<p><img alt="Screenshot" src="img/layer_settings_example_1.png" /></p>
 <p>And the following settings were used in the <strong>logo</strong> layer to add a 3D logo (using an alpha mask) on top:</p>
-<p><img alt="Screenshot" src="../img/layer_settings_example_2.png" /></p>
+<p><img alt="Screenshot" src="img/layer_settings_example_2.png" /></p>
 <p>As you can see, the <strong>Layer Settings</strong> panel enables essentially limitless possibilities for combining layers and generating interesting and realistic effects, so I encourage
 you to play around with all of the tools provided to see what works for your texture.</p>
 <h2 id="other-principled-bsdf-inputs">Other Principled BSDF Inputs</h2>
@@ -167,11 +167,11 @@ delete a layer and wish to recover it at a later point. Alternatively, layers ca
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "..",
+            var base_url = ".",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

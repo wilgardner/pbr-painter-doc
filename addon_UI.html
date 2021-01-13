@@ -7,15 +7,15 @@
         
         
         
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Merge Visible - PBR Painter</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Understanding the Main UI Panel - PBR Painter</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
 
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">PBR Painter</a>
+                <a class="navbar-brand" href=".">PBR Painter</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -34,19 +34,19 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href=".." class="nav-link">Overview</a>
+                                <a href="index.html" class="nav-link">Overview</a>
                             </li>
                             <li class="navitem">
-                                <a href="../getting_started/" class="nav-link">Getting Started</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../addon_UI/" class="nav-link">Understanding the Main UI Panel</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../other_panels/" class="nav-link">Other UI Panels</a>
+                                <a href="getting_started.html" class="nav-link">Getting Started</a>
                             </li>
                             <li class="navitem active">
-                                <a href="./" class="nav-link">Merge Visible</a>
+                                <a href="addon_UI.html" class="nav-link">Understanding the Main UI Panel</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="other_panels.html" class="nav-link">Other UI Panels</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="merge_visible.html" class="nav-link">Merge Visible</a>
                             </li>
                         </ul>
 
@@ -57,12 +57,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../other_panels/" class="nav-link">
+                                <a rel="prev" href="getting_started.html" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="other_panels.html" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -84,8 +84,16 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#merge-visible" class="nav-link">Merge Visible</a>
+            <li class="nav-item" data-level="1"><a href="#understanding-the-main-ui-panel" class="nav-link">Understanding the Main UI Panel</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#before-adding-a-pbr-layer" class="nav-link">Before Adding a PBR Layer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#the-ui-with-active-layers" class="nav-link">The UI with Active Layers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -93,23 +101,32 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="merge-visible">Merge Visible</h1>
-<p>The <strong>merge visible</strong> tool, located in the main UI panel, creates a merged layer using all of the <em>visible</em> (i.e. not hidden) layers in the PBR layers list. The new
-merged layer will replace all of the visible layers and will be locked at the bottom of the layer list. It is therefore advised that you only use this tool when
-you are entirely happy with the layers being merged and you won't need to make any changes later on.</p>
-<p>When you select merge visible, you will see the following popup:</p>
-<p><img alt="Screenshot" src="../img/merge_visible.png" /></p>
-<p>Essentially, <strong>merge visible</strong> is a <strong>smart baking</strong> tool that automatically detects which PBR components (albedo, roughness, normals etc) need to be baked in order to
-reproduce the material exactly. In other words, the algorithm will detect which components to the texture vary between layers, and therefore require a map.
-All other components will simply be given the constant value associated with the material.</p>
-<p>Because the merged layer cannot be modified, it is advised that you select <strong>Backup Material</strong> (on by default) when merging, as this will backup the current material in
-case you need to change anything later. Note that this backed up material will dissapear when restarting Blender, however the individual layers will also be stored in the 
-<strong>Deleted Layers</strong> panel, if you need to access them that way.</p>
-<p>As per the image above, you can specify the resolution of the baked textures. This is 4k by default, but you may need to increase this if you have high resolution starting
-textures and/or you use a high scale value in the mapping. If the resolution is too low, you may lose detail/quality in the merged layer, so you can repeat the process with
-a higher resolution (assuming you have backed up the material).</p>
-<p>As a final note, you will be prompted to open the <strong>system console</strong> prior to clicking <strong>ok</strong>. This will let you monitor the progress of the layer merging/baking. Otherwise,
-Blender will merely freeze until the algorithm is completed.</p></div>
+<h1 id="understanding-the-main-ui-panel">Understanding the Main UI Panel</h1>
+<h2 id="before-adding-a-pbr-layer">Before Adding a PBR Layer</h2>
+<p>When there are no currently active PBR Layers on the material, the UI will look like this and you will be prompted to add a new layer to get started:</p>
+<p><img alt="Screenshot" src="img/ui_no_layers.png" /></p>
+<p>Go ahead and click the "Add Layer" button to add a new layer:</p>
+<p><img alt="Screenshot" src="img/ui_add_layer.png" /></p>
+<h2 id="the-ui-with-active-layers">The UI with Active Layers</h2>
+<p>Once you've added one or more layers, you will see the complete UI for the addon. This is outlined below:</p>
+<p><img alt="Screenshot" src="img/ui_full.png" /></p>
+<p>The following tools can be accessed in this main panel:</p>
+<ul>
+<li><strong>Mask resolution</strong>: Controls the resolution of the mask you will be painting that will be used to perform the multipass PBR painting. Note that this resolution
+only affects the <em>subsequently added</em> layer.</li>
+<li><strong>List of active layers</strong>: Shows all of the active PBR layers associated with the material, in order. That is, layers higher up on the list appear on top in the
+material.</li>
+<li><strong>Layer name</strong>: The (modifiable) name of the currently selected layer, shown in the list.</li>
+<li><strong>Toggle paint/erase</strong>: Switch between painting and erasing the currently selected layer.</li>
+<li><strong>Hide layer</strong>: Hide the currently selected layer.</li>
+<li><strong>New layer</strong>: Add a new layer to the list. Note that the new layer will be added immediately above the currently selected layer.</li>
+<li><strong>Delete layer</strong>: Delete the currently selected layer. Note that up to 10 layers are stored in the <strong>Deleted Layers</strong> panel (more on this later).</li>
+<li><strong>Move layer</strong>: Move the currently selected layer up or down in the list.</li>
+<li><strong>Merge visible</strong>: Merge all visible layers (more on this later).</li>
+<li><strong>Save images</strong>: Saves all modified masks to the .blend file. This is important to avoid any loss of work due to unexpected crashes etc.</li>
+</ul>
+<p>The following sections in this documentation outline the different panels in PBR Painter and their various functionalities/purposes. Therefore, these sections
+will be most useful as a reference while you are using the addon.</p></div>
             </div>
         </div>
 
@@ -118,11 +135,11 @@ Blender will merely freeze until the algorithm is completed.</p></div>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "..",
+            var base_url = ".",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

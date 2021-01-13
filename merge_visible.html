@@ -7,15 +7,15 @@
         
         
         
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Getting Started - PBR Painter</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Merge Visible - PBR Painter</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
 
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">PBR Painter</a>
+                <a class="navbar-brand" href=".">PBR Painter</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -34,19 +34,19 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href=".." class="nav-link">Overview</a>
+                                <a href="index.html" class="nav-link">Overview</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="getting_started.html" class="nav-link">Getting Started</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="addon_UI.html" class="nav-link">Understanding the Main UI Panel</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="other_panels.html" class="nav-link">Other UI Panels</a>
                             </li>
                             <li class="navitem active">
-                                <a href="./" class="nav-link">Getting Started</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../addon_UI/" class="nav-link">Understanding the Main UI Panel</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../other_panels/" class="nav-link">Other UI Panels</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="../merge_visible/" class="nav-link">Merge Visible</a>
+                                <a href="merge_visible.html" class="nav-link">Merge Visible</a>
                             </li>
                         </ul>
 
@@ -57,12 +57,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href=".." class="nav-link">
+                                <a rel="prev" href="other_panels.html" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../addon_UI/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -84,24 +84,8 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#getting-started" class="nav-link">Getting Started</a>
+            <li class="nav-item" data-level="1"><a href="#merge-visible" class="nav-link">Merge Visible</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#installation" class="nav-link">Installation</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#finding-pbr-painter-in-blender" class="nav-link">Finding PBR Painter in Blender</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#preparing-for-painting" class="nav-link">Preparing for Painting</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#import-considerations-please-read" class="nav-link">Import Considerations (PLEASE READ)</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -109,42 +93,23 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="getting-started">Getting Started</h1>
-<h2 id="installation">Installation</h2>
-<p>When you purchase PBR Painter, you will have access to the .zip file that contains the entire addon package. </p>
-<p>This can be installed in Blender 
-using the normal approach:
-<img alt="Screenshot" src="../img/installation.gif" /></p>
-<h2 id="finding-pbr-painter-in-blender">Finding PBR Painter in Blender</h2>
-<p>PBR Painter is located in Texture Paint mode at the bottom of the Tools panel:
-<img alt="Screenshot" src="../img/location.png" /></p>
-<h2 id="preparing-for-painting">Preparing for Painting</h2>
-<p>PBR Painter combines Blender's built in texture painting toolset with complex node setups (behind the scenes) to 
-enable layered, multipass PBR painting. As such, preparing a mesh for PBR Painting is identical to the steps involved
-in preparing for traditional texture painting. </p>
-<p>In other words, the mesh must first be UV unwrapped using whichever method you prefer. Then, a new material needs 
-to be added, which can be done within PBR Painter's UI. Once this is done, you are ready to start adding PBR Layers
-and painting your PBR texture!</p>
-<h2 id="import-considerations-please-read">Import Considerations (PLEASE READ)</h2>
-<p>There are a few things to consider before getting started as these will have a considerable impact on your experience with PBR Painter:</p>
-<ul>
-<li>
-<p>PBR Painter generates complex node groups associated with each layer. These are created, modified, connected and deleted using the various
-tools within the addon, so you never actually need to even look at the node tree. <strong>It is important to NOT delete any of the node groups created
-by PBR Painter as this could cause issues with the addon, and may break the addon entirely</strong>. If you feel that there should be more flexibility with regards to how PBR Painter could be incorporated with a manual node setup, please send me an
-email (w2gardner@gmail.com) and I will try to incorporate your suggestions into future versions of the addon.</p>
-</li>
-<li>
-<p>As is discussed in the following sections, there is a button within the PBR Painter UI called <strong>Save Images</strong>, which automatically saves all modified
-images. It is important that images are <em>regularly saved</em>, to avoid losing any work due to unexpected crashes etc.</p>
-</li>
-<li>
-<p>There is a limit on the number of image texture nodes that can be represented using <strong>Eevee</strong> within the <strong>Material Preview</strong> mode. If you reach this limit 
-(somewhere between 30-40) by adding many PBR layers, your texture will turn solid pink. If this happens, there are two potential options going forward: Option one
-is to hide one or more lower layers while you work on new layers. Option two is to take advantage of the <strong>Merge Visible</strong> tool in the PBR Painter UI (discussed
-more in the following sections), which will merge all of the currently visible active layers into a single layer, which uses corresponding merged image textures.</p>
-</li>
-</ul></div>
+<h1 id="merge-visible">Merge Visible</h1>
+<p>The <strong>merge visible</strong> tool, located in the main UI panel, creates a merged layer using all of the <em>visible</em> (i.e. not hidden) layers in the PBR layers list. The new
+merged layer will replace all of the visible layers and will be locked at the bottom of the layer list. It is therefore advised that you only use this tool when
+you are entirely happy with the layers being merged and you won't need to make any changes later on.</p>
+<p>When you select merge visible, you will see the following popup:</p>
+<p><img alt="Screenshot" src="img/merge_visible.png" /></p>
+<p>Essentially, <strong>merge visible</strong> is a <strong>smart baking</strong> tool that automatically detects which PBR components (albedo, roughness, normals etc) need to be baked in order to
+reproduce the material exactly. In other words, the algorithm will detect which components to the texture vary between layers, and therefore require a map.
+All other components will simply be given the constant value associated with the material.</p>
+<p>Because the merged layer cannot be modified, it is advised that you select <strong>Backup Material</strong> (on by default) when merging, as this will backup the current material in
+case you need to change anything later. Note that this backed up material will dissapear when restarting Blender, however the individual layers will also be stored in the 
+<strong>Deleted Layers</strong> panel, if you need to access them that way.</p>
+<p>As per the image above, you can specify the resolution of the baked textures. This is 4k by default, but you may need to increase this if you have high resolution starting
+textures and/or you use a high scale value in the mapping. If the resolution is too low, you may lose detail/quality in the merged layer, so you can repeat the process with
+a higher resolution (assuming you have backed up the material).</p>
+<p>As a final note, you will be prompted to open the <strong>system console</strong> prior to clicking <strong>ok</strong>. This will let you monitor the progress of the layer merging/baking. Otherwise,
+Blender will merely freeze until the algorithm is completed.</p></div>
             </div>
         </div>
 
@@ -153,11 +118,11 @@ more in the following sections), which will merge all of the currently visible a
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "..",
+            var base_url = ".",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

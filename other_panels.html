@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>UI Sub-Panels - PBR Painter</title>
+        <title>UI Subpanels - PBR Painter</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
@@ -43,10 +43,16 @@
                                 <a href="addon_UI.html" class="nav-link">Understanding the Main UI Panel</a>
                             </li>
                             <li class="navitem active">
-                                <a href="other_panels.html" class="nav-link">UI Sub-Panels</a>
+                                <a href="other_panels.html" class="nav-link">UI Subpanels</a>
                             </li>
                             <li class="navitem">
                                 <a href="merge_visible.html" class="nav-link">Merge Visible</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="change_log.html" class="nav-link">Change Log and Future Directions</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="final_note.html" class="nav-link">A Final Note</a>
                             </li>
                         </ul>
 
@@ -84,17 +90,21 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#ui-sub-panels" class="nav-link">UI Sub-Panels</a>
+            <li class="nav-item" data-level="1"><a href="#ui-subpanels" class="nav-link">UI Subpanels</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#texture-maps" class="nav-link">Texture Maps</a>
+            <li class="nav-item" data-level="2"><a href="#pbr-channels" class="nav-link">PBR Channels</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#id-map" class="nav-link">ID Map</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#masks" class="nav-link">Masks</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             <li class="nav-item" data-level="2"><a href="#texture-mapping" class="nav-link">Texture Mapping</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#layer-settings" class="nav-link">Layer Settings</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -113,49 +123,100 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="ui-sub-panels">UI Sub-Panels</h1>
-<h2 id="texture-maps">Texture Maps</h2>
-<p>Here you can import any combination of PBR texture flat maps, including <strong>albedo/base color</strong>, <strong>metallic</strong>, <strong>roughness</strong>, 
-<strong>normals</strong>, <strong>height</strong>, <strong>alpha</strong> and/or <strong>ambient occlusion (AO)</strong>:</p>
-<p><img alt="Screenshot" src="img/texture_maps.png" /></p>
-<p>Alternatively, or in combination with these maps, you can also select a single value for the <strong>base color</strong>, <strong>metallic</strong>, 
-<strong>roughness</strong> and/or <strong>height</strong>.</p>
-<p>Ticking a checkbox will allow you to import your map from its directory:</p>
-<p><img alt="Screenshot" src="img/texture_maps_1.png" /></p>
-<p>Once a map is imported, you have access to all of the various properties associated with a normal <strong>image texture</strong> node. Note
-that you will need to change the <strong>color space</strong> to <strong>non-color</strong> if necessary (e.g. for roughness, normals etc.):</p>
-<p><img alt="Screenshot" src="img/texture_maps_2.png" /></p>
+<h1 id="ui-subpanels">UI Subpanels</h1>
+<h2 id="pbr-channels">PBR Channels</h2>
+<p>This panel will contain different options, depending on whether the selected layer is a <strong>multipass</strong> or <strong>single pass</strong> layer.</p>
+<h4 id="multipass-layer">Multipass Layer</h4>
+<p>With a <strong>multipass</strong> layer selected, you will first see the following interface:</p>
+<p><img alt="Screenshot" src="img/pbr_channels_multipass.png" /></p>
+<p>Here you can select which of these channels you want to include in the multipass setup for the layer. Any channels that are not
+selected here will have an opacity of 0 for the layer. In other words, they will be given the value of whatever is underneath the
+painted area on the mesh. </p>
+<p>The following shows all of the channels switched on, for demonstration purposes:</p>
+<p><img alt="Screenshot" src="img/pbr_channels_multipass_2.png" /></p>
+<p>For the <strong>albedo</strong> channel, you can either paint directly using the color of the brush or select <em>use constant albedo</em>, which will
+apply a constant color over the painter area for the layer, which you can then adjust. For the <strong>metallic</strong>, <strong>roughness</strong>, <strong>normals</strong>, <strong>specular</strong>
+and <strong>height</strong> channels, you can select a single value that will be applied over the painted area. For the <strong>height</strong> channel, you can
+also adjust the height <em>scale</em> and <em>midlevel</em>.</p>
+<p>You can also adjust the <em>opacity</em> of each of these layers individually. An opacity of 0 is identical to not including the channel at all, and
+an opacity of 1 is completely opaque. </p>
+<p>If <strong>ambient occlusion</strong> (AO) is selected, you will immediately be prompted to select a texture for the channel. You can also change the
+AO strength here.</p>
+<p>You can also opt to import a map/texture for each channel, using the <em>use channel map</em> checkbox. This will then let you add a texture to
+use for painting within that channel. For example, selecting <em>use albedo map</em> shows the following:</p>
+<p><img alt="Screenshot" src="img/pbr_channels_multipass_3.png" /></p>
+<p>If you use a normal map/texture, you will also see a new checkbox appear next to <em>opacity</em>, called <em>Combine normals</em>:</p>
+<p><img alt="Screenshot" src="img/pbr_channels_multipass_4.png" /></p>
+<p>If selected, <em>combine normals</em> will automatically combine the normals of the current layer with any normals underneath. The method used
+is mathematically-derived, so can be applied for multiple stacked layers to combine all normals accurately. Refer to the instructional
+video for a demonstration on painting with combined normals.</p>
+<p>The following shows an example PBR Channels subpanel setup using a <strong>multipass</strong> layer, whereby a set of granite rock textures have been 
+imported for painting onto a Suzanne head:</p>
+<p><img alt="Screenshot" src="img/pbr_channels_multipass_5.png" /></p>
+<p>And below is an example setup for painting moss on top of the granite rock layer, using <strong>combined normals</strong> and a low height opacity:</p>
+<p><img alt="Screenshot" src="img/pbr_channels_multipass_6.png" /></p>
+<h4 id="single-pass-layer">Single Pass Layer</h4>
+<p>A <strong>single pass</strong> layer lets you paint individual PBR channels one at a time, much like how Blender's internal texture painting system works. However,
+the main difference is that the <strong>single pass</strong> layer is embedded within PBR Painter, and therefore works within the layer-based system. Additional
+options are also available (e.g. combine normals). </p>
+<p>Also, by default new images will have an alpha value of 0 everywhere, so that they don't cover up
+underlying layers. As you paint, only the painted areas will show on the texture.</p>
+<p>When you select a channel, you will be prompted to first select which cannel you wish to paint:</p>
+<p><img alt="Screenshot" src="img/pbr_channels_single_pass.png" /></p>
+<p>Then, you will be prompted to create a new image (or open a previous image) in order to start painting:</p>
+<p><img alt="Screenshot" src="img/pbr_channels_single_pass_2.png" /></p>
+<p>Once you have an image created/loaded, you can start painting a texture for that channel. You can use all of the tools you will be familiar with to do
+this, such as texture masks, stencils etc. </p>
+<p>When you are happy with a channel, you can switch to another and repeat these steps, until all channels have been painted.</p>
+<p>An important application of this, which is covered in the instructional video, is painting over seams, which can be obvious if painting textures onto a mesh with
+a <strong>multipass</strong> layer.</p>
 <p>Once you are happy with your imported maps and/or values for other PBR components, this panel can be closed to clean up the UI.</p>
-<p>Now, you are ready to check out the <strong>Texture Mapping</strong> panel.</p>
+<p>Now, you are ready to check out the <strong>ID Map</strong> panel.</p>
+<h2 id="id-map">ID Map</h2>
+<p>As the name suggests, this panel is for importing and using an <strong>ID map</strong> for the material:</p>
+<p><img alt="Screenshot" src="img/id_map.png" /></p>
+<p>If you are not familiar with ID maps, they are essentially color-coded maps representing different regions in the material. 
+Using an ID map lets you paint only on a specific region at a given time.</p>
+<p>Once an ID map has been opened/imported, you will see the following options:</p>
+<p><img alt="Screenshot" src="img/id_map_2.png" /></p>
+<p>Click <em>View ID map on mesh</em> to see the map on the mesh, then select the <em>ID Color</em> of the region you wish to work with, using the
+eyedropper tool:</p>
+<p><img alt="Screenshot" src="img/id_map_3.png" /></p>
+<p>With the color selected, you can increase the <em>color threshold</em> value if there is an issue with the color matching, or if you want
+to include similar colors in your selection.</p>
+<p>Once the ID map is applied and the color selected, with the appropriate threshold, painting will be restricted to only that region, e.g.:</p>
+<p><img alt="Screenshot" src="img/id_map_4.png" /></p>
+<p>Note that once an ID map has been opened/imported for any layer, it will be applied for every other layer automatically (once ID map is
+selected).</p>
+<p>The next panel to check out is the <strong>masks</strong> panel, where you can add a variety of different masks to use for the layer.</p>
+<h2 id="masks">Masks</h2>
+<p>In this subpanel, you can add a <strong>alpha map</strong> and/or <strong>procedural mask</strong> to the texture:</p>
+<p><img alt="Screenshot" src="img/masks.png" /></p>
+<p>In the example below, a 'logo' alpha map has been used to paint rock over the top of a dirt background:</p>
+<p><img alt="Screenshot" src="img/masks_2.png" /></p>
+<p>It is important to recognize that an alpha map can be any greyscale image, meaning that it is easy to make your own.</p>
+<p>If you select <strong>procedural mask</strong>, you will have the option of either a <em>curvature</em> mask or a <em>normal direction</em> mask:</p>
+<p><img alt="Screenshot" src="img/masks_3.png" /></p>
+<p>Note that other options will be added with future versions of PBR Painter. </p>
+<p>As for the ID map, you can visualize these masks on the mesh with the checkbox shown, and you can adjust them as needed using the colorramp properties and/or 
+the normal direction interactive tool (for normal direction only):</p>
+<p><img alt="Screenshot" src="img/masks_4.png" />
+<img alt="Screenshot" src="img/masks_5.png" /></p>
+<p>Note that any masks used will be combined/multiplied (and also multiplied with the ID map, if used). This gives fine control over different combinations of masks.</p>
 <h2 id="texture-mapping">Texture Mapping</h2>
 <p>This panel allows you to change the <strong>scale</strong>, <strong>location</strong> (in the <em>x</em> and <em>y</em> directions) and the <strong>rotation</strong> of any imported PBR
 texture maps:</p>
 <p><img alt="Screenshot" src="img/texture_mapping.png" /></p>
 <p>Note that if no maps are imported you will be prompted that this panel is not applicable.</p>
 <p>Play around with these values to get the mapping that works for you, then you are ready to check out the panel you will probably use most often: the <strong>Layer Settings</strong> panel.</p>
-<h2 id="layer-settings">Layer Settings</h2>
-<p>You will probably spend most of your time within this panel while you are fine-tuning your texture. Here is where you will find the most powerful tools that will let you create ultra
-realistic textures that can be tuned to look just right.</p>
-<p>This is what the panel looks like:</p>
-<p><img alt="Screenshot" src="img/layer_settings.png" /></p>
-<p>Firstly, you can access the <strong>opacities</strong> of each of the PBR components you specified earlier in <strong>Texture Maps</strong>. Note that this is the opacity of <em>this layer</em> with respect to the 
-other layers beneath it. Therefore, these sliders are <em>extremely</em> powerful for letting you merge each component individually with those of the underlying layers.</p>
-<p>You will also notice a <strong>Combine Normals</strong> checkbox. As the name suggests, this lets you combine the normals of the current layer with those underneath, using a mathematically-derived
-approach that is much more accurate and produces far better results than merely setting the normal opacity to 0.5. Because of this, you can stack normals from multiple layers and 
-combine them all into a single normal map for your texture, which will retain all of the details associated with each layer's normal map in the final map.</p>
-<p>Finally, you can also set the <strong>Height Scale</strong>, <strong>Height Midlevel</strong> and the <strong>AO Strength</strong> here, which are only applicable if you use a non-zero height (or a height map) or an 
-AO map for the layer, respectively.</p>
-<p>As an example, the following settings were used (in the moss layer) to generate this moss-covered rock texture:</p>
-<p><img alt="Screenshot" src="img/layer_settings_example_1.png" /></p>
-<p>And the following settings were used in the <strong>logo</strong> layer to add a 3D logo (using an alpha mask) on top:</p>
-<p><img alt="Screenshot" src="img/layer_settings_example_2.png" /></p>
-<p>As you can see, the <strong>Layer Settings</strong> panel enables essentially limitless possibilities for combining layers and generating interesting and realistic effects, so I encourage
-you to play around with all of the tools provided to see what works for your texture.</p>
+<p>If you have an <em>alpha map</em> loaded, you will also see the option to use separate mapping for the alpha map:</p>
+<p><img alt="Screenshot" src="img/texture_mapping_2.png" /></p>
+<p>This is useful if you don't want your alpha map to be mapped in the same way as your imported textures for the material.</p>
 <h2 id="other-principled-bsdf-inputs">Other Principled BSDF Inputs</h2>
 <p>Here you will find all of the other inputs to the Principled Shader, which can be modified as necessary. Note that you can also change the opacities of each input for the layer,
-as per the previous section.</p>
-<p>In many cases, these values can remain unchanged, however there are certain materials that will require them to be modified. Note that any modified values will trigger the <strong>Merge Visible</strong>
-button to bake that value as an individual map, as is explained later.</p>
+as per the previous section. Note also that this subpanel is only available for a <strong>multipass</strong> layer.</p>
+<p>In many cases, these values can remain unchanged, however there are certain materials that will require them to be modified. Note that selecting any channel
+will trigger the <strong>Merge Visible</strong> function to bake that value as an individual map, as is explained later.</p>
 <h2 id="deleted-layers">Deleted Layers</h2>
 <p>Finally, the last panel, the <strong>Deleted Layers</strong> lets you recover up to 10 deleted layers and return them to the active layers list. This is useful if you change your mind or accidentally
 delete a layer and wish to recover it at a later point. Alternatively, layers can be permanently deleted from this panel, at which point they can no longer be recovered.</p></div>

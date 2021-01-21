@@ -43,10 +43,16 @@
                                 <a href="addon_UI.html" class="nav-link">Understanding the Main UI Panel</a>
                             </li>
                             <li class="navitem">
-                                <a href="other_panels.html" class="nav-link">UI Sub-Panels</a>
+                                <a href="other_panels.html" class="nav-link">UI Subpanels</a>
                             </li>
                             <li class="navitem">
                                 <a href="merge_visible.html" class="nav-link">Merge Visible</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="change_log.html" class="nav-link">Change Log and Future Directions</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="final_note.html" class="nav-link">A Final Note</a>
                             </li>
                         </ul>
 
@@ -86,11 +92,11 @@
             
             <li class="nav-item" data-level="1"><a href="#understanding-the-main-ui-panel" class="nav-link">Understanding the Main UI Panel</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#before-adding-a-pbr-layer" class="nav-link">Before Adding a PBR Layer</a>
+            <li class="nav-item" data-level="2"><a href="#the-ui-without-layers" class="nav-link">The UI without Layers</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#the-ui-with-active-layers" class="nav-link">The UI with Active Layers</a>
+            <li class="nav-item" data-level="2"><a href="#the-ui-with-layers" class="nav-link">The UI with Layers</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -102,20 +108,44 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="understanding-the-main-ui-panel">Understanding the Main UI Panel</h1>
-<h2 id="before-adding-a-pbr-layer">Before Adding a PBR Layer</h2>
+<h2 id="the-ui-without-layers">The UI without Layers</h2>
 <p>When there are no currently active PBR Layers on the material, the UI will look like this and you will be prompted to add a new layer to get started:</p>
 <p><img alt="Screenshot" src="img/ui_no_layers.png" /></p>
 <p>Go ahead and click the "Add Layer" button to add a new layer:</p>
 <p><img alt="Screenshot" src="img/ui_add_layer.png" /></p>
-<h2 id="the-ui-with-active-layers">The UI with Active Layers</h2>
+<p>Adding a new layer generates the following dialog box:</p>
+<p><img alt="Screenshot" src="img/ui_add_layer_dialog1.png" /> </p>
+<p>Here, you can select the layer type, either <strong>multipass</strong> or <strong>single pass</strong>:</p>
+<p><img alt="Screenshot" src="img/ui_add_layer_dialog2.png" /></p>
+<p>Briefly, <strong>multipass</strong> layers are used to paint any combination of PBR texture channels <em>simultaneously</em>, whereas for <strong>single pass</strong> you can paint each 
+channel separately, which may be necessary in some situations (more on this below).</p>
+<p>If you select <strong>multipass</strong> (which you will use most frequently), you need to select the <em>resolution</em> and of the new layer. 
+This is the resolution of the mask you will be painting that will be used to perform the multipass PBR painting. You can also opt 
+for 32 bit floating point depth, as opposed to 16 bit by default.</p>
+<p>If you select <strong>single pass</strong>, nothing else needs to be specified, as you will specify these values separately for each PBR channel that you paint.</p>
+<p>The following sections explain how the <strong>multipass</strong> and <strong>single pass</strong> layer types work, and how they differ from eachother. This will also become clearer
+as you read through the remaining documentation.</p>
+<h3 id="multipass-layers">Multipass Layers</h3>
+<p>As mentioned, <strong>multipass</strong> layers provide almost all of the functionality of PBR Painter. With a <strong>multipass</strong> layer, you can paint any combination of PBR Channels - either 
+using single values or imported texture maps - simultaneously onto your mesh, with a single brush stroke. </p>
+<p>For <strong>multipass</strong> layers, you will be painting a <em>single</em> mask that will be used to generate all of the PBR channels you have selected. This process is what enables
+the multipass painting functionality. For example, you could simultaenously paint an <strong>albedo</strong> texture, a <strong>roughness</strong> texture and a <strong>normal</strong> texture, while setting
+a uniform <strong>height</strong> value of, for example, 0.5. You can also opt to specify any other input to the Principled Shader to be included within the multipass setup.
+Again, this will become clearer later.</p>
+<h3 id="single-pass-layers">Single Pass Layers</h3>
+<p>For a <strong>single pass</strong> layer, you can paint any combination of <strong>albedo</strong>, <strong>metallic</strong>, <strong>roughness</strong>, <strong>normal</strong> or <strong>height</strong> textures directly. The important distinction 
+here is that the <strong>single pass</strong> layer lets you paint these PBR channels separately within a single layer, meaning that they can occupy different areas on the mesh, and they
+can be non-uniform values (e.g. you can paint variations in roughness directly, whereas for <strong>multipass</strong> layers the roughness is either a single value or a texture). These layers
+are therefore essentially the same as the internal texture paint system in Blender, although they have been adapted to be able to be included in PBR Painter's layered setup. One
+important application of <strong>single pass</strong> layers is painting over texture seams, which is demonstrated in the instructional video provided.</p>
+<h2 id="the-ui-with-layers">The UI with Layers</h2>
 <p>Once you've added one or more layers, you will see the complete UI for the addon. This is outlined below:</p>
 <p><img alt="Screenshot" src="img/ui_full.png" /></p>
-<p>The following tools can be accessed in this main panel:</p>
+<p>The following can be accessed in this main panel:</p>
 <ul>
-<li><strong>Mask resolution</strong>: Controls the resolution of the mask you will be painting that will be used to perform the multipass PBR painting. Note that this resolution
-only affects the <em>subsequently added</em> layer.</li>
 <li><strong>List of active layers</strong>: Shows all of the active PBR layers associated with the material, in order. That is, layers higher up on the list appear on top in the
 material.</li>
+<li><strong>Layer type</strong>: The type of layer, either <strong>multipass</strong>, <strong>single pass</strong> or <strong>merged</strong> (more on this later).</li>
 <li><strong>Layer name</strong>: The (modifiable) name of the currently selected layer, shown in the list.</li>
 <li><strong>Toggle paint/erase</strong>: Switch between painting and erasing the currently selected layer.</li>
 <li><strong>Hide layer</strong>: Hide the currently selected layer.</li>
@@ -125,9 +155,9 @@ material.</li>
 <li><strong>Merge visible</strong>: Merge all visible layers (more on this later).</li>
 <li><strong>Save images</strong>: Saves all modified masks to the .blend file. This is important to avoid any loss of work due to unexpected crashes etc.</li>
 </ul>
-<p>In addition to these tools, there are also 5 sub-panels which constitute the remainder of the addon: <strong>Texture Maps</strong>, <strong>Texture Mapping</strong>, <strong>Layer Settings</strong>, 
-<strong>Other Principled BSDF Inputs</strong> and <strong>Deleted Layers</strong>. The following sections in this documentation describe what is in these sub-panels and 
-their various functionalities/purposes. <strong>The following sections will be most useful as a reference while you are using the addon.</strong></p></div>
+<p>In addition to these tools, there are also 6 subpanels which constitute the remainder of the addon: <strong>PBR Channels</strong>, <strong>ID Map</strong>, <strong>Masks</strong>, 
+<strong>Other Principled BSDF Inputs</strong> and <strong>Deleted Layers</strong>. The following sections in this documentation describe what is in these subpanels and 
+their various functionalities/purposes. <strong>The following sections will therefore be most useful as a reference while you are using the addon.</strong></p></div>
             </div>
         </div>
 

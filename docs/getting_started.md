@@ -29,7 +29,7 @@ There are a few things to consider before getting started as these will have a c
 
 - PBR Painter generates complex node groups associated with each layer. These are created, modified, connected and deleted using the various
 tools within the addon, so you never actually need to even look at the node tree. __It is important to NOT delete any of the node groups created
-by PBR Painter as this could cause issues with the addon, and may break the addon entirely__. If you feel that there should be more flexibility with regards to how PBR Painter could be incorporated with a manual node setup, please send me an
+by PBR Painter as this could cause issues with the addon. Deleting nodes _within_ a node group may break the addon entirely.__ If you feel that there should be more flexibility with regards to how PBR Painter could be incorporated with a manual node setup, please send me an
 email (w2gardner@gmail.com) and I will try to incorporate your suggestions into future versions of the addon.
 
 - As is discussed in the following sections, there is a button within the PBR Painter UI called __Save Images__, which automatically saves all modified

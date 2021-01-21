@@ -5,5 +5,7 @@ nav:
    - addon_UI.md
    - other_panels.md
    - merge_visible.md
+   - change_log.md
+   - final_note.md
 theme: mkdocs
 use_directory_urls: false

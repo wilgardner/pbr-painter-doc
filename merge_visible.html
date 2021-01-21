@@ -110,11 +110,12 @@
             <div class="section">
               
                 <h1 id="merge-visible">Merge Visible</h1>
-<p>The <strong>merge visible</strong> tool, located in the main UI panel, creates a merged layer using all of the <em>visible</em> (i.e. not hidden) layers in the PBR layers list. The new
-merged layer will replace all of the visible layers and will be locked at the bottom of the layer list. It is therefore advised that you only use this tool when
+<p>The <strong>merge visible</strong> tool, located in the main UI panel, creates a merged layer using all of the <em>visible</em> (i.e. not hidden) layers in the PBR layers list: </p>
+<p><img alt="Screenshot" src="img/merge_visible.png" /></p>
+<p>Once layers are merged, the merged layer will replace all of the visible layers and will be locked at the bottom of the layer list. It is therefore advised that you only use this tool when
 you are entirely happy with the layers being merged and you won't need to make any changes later on.</p>
 <p>When you select merge visible, you will see the following popup:</p>
-<p><img alt="Screenshot" src="img/merge_visible.png" /></p>
+<p><img alt="Screenshot" src="img/merge_visible_2.png" /></p>
 <p>Essentially, <strong>merge visible</strong> is a <strong>smart baking</strong> tool that automatically detects which PBR components (albedo, roughness, normals etc) need to be baked in order to
 reproduce the material exactly. In other words, the algorithm will detect which components to the texture vary between layers, and therefore require a map.
 All other components will simply be given the constant value associated with the material.</p>

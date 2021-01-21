@@ -1,12 +1,15 @@
 # Merge Visible
 
-The __merge visible__ tool, located in the main UI panel, creates a merged layer using all of the _visible_ (i.e. not hidden) layers in the PBR layers list. The new
-merged layer will replace all of the visible layers and will be locked at the bottom of the layer list. It is therefore advised that you only use this tool when
+The __merge visible__ tool, located in the main UI panel, creates a merged layer using all of the _visible_ (i.e. not hidden) layers in the PBR layers list: 
+
+![Screenshot](img/merge_visible.png)
+
+Once layers are merged, the merged layer will replace all of the visible layers and will be locked at the bottom of the layer list. It is therefore advised that you only use this tool when
 you are entirely happy with the layers being merged and you won't need to make any changes later on.
 
 When you select merge visible, you will see the following popup:
 
-![Screenshot](img/merge_visible.png)
+![Screenshot](img/merge_visible_2.png)
 
 Essentially, __merge visible__ is a __smart baking__ tool that automatically detects which PBR components (albedo, roughness, normals etc) need to be baked in order to
 reproduce the material exactly. In other words, the algorithm will detect which components to the texture vary between layers, and therefore require a map.

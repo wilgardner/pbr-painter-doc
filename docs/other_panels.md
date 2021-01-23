@@ -54,8 +54,7 @@ And below is an example setup for painting moss on top of the granite rock layer
 #### Single Pass Layer
 
 A __single pass__ layer lets you paint individual PBR channels one at a time, much like how Blender's internal texture painting system works. However,
-the main difference is that the __single pass__ layer is embedded within PBR Painter, and therefore works within the layer-based system. Additional
-options are also available (e.g. combine normals). 
+the main difference is that the __single pass__ layer is embedded within PBR Painter, and therefore works within the layer-based system.
 
 Also, by default new images will have an alpha value of 0 everywhere, so that they don't cover up
 underlying layers. As you paint, only the painted areas will show on the texture.

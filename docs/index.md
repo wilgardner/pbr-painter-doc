@@ -16,9 +16,6 @@ This documentation is complementary to the official PBR Painter overview/instruc
 you watch the instructional video in addition to (or at the least, instead of) reading this documentation.
 
 PBR Painter v1.0 - Instructional Video:
-[TO BE CHANGED]
-<iframe width="560" height="315" src="https://www.youtube.com/embed/diFn-5O0AxY" 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zR8gwiF6opI" 
 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
 gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-

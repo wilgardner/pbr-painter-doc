@@ -4,6 +4,10 @@
 
 ####Compatible with Blender v2.91:
 
+- v1.0.3:
+	- Reduced dependency on Blender operations for better compatibility with future Blender versions
+
+
 - v1.0.2: Release version
 
 ## Future Directions

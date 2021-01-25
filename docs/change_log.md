@@ -2,7 +2,9 @@
 
 ## Change Log
 
-- v1.0: Release version
+####Compatible with Blender v2.91:
+
+- v1.0.2: Release version
 
 ## Future Directions
 

@@ -18,6 +18,9 @@ The following shows all of the channels switched on, for demonstration purposes:
 
 ![Screenshot](img/pbr_channels_multipass_2.png)
 
+__Note that the _layer blend_ option for each channel is a new addition to v1.0.4. This lets you change, for each channel, how the current
+layer is blended with the underlying texture.__
+
 For the __albedo__ channel, you can either paint directly using the color of the brush or select _use constant albedo_, which will
 apply a constant color over the painter area for the layer, which you can then adjust. For the __metallic__, __roughness__, __normals__, __specular__
 and __height__ channels, you can select a single value that will be applied over the painted area. For the __height__ channel, you can

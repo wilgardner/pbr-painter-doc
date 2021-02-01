@@ -18,8 +18,11 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 
 ## Roadmap
 
+#### Completed
+- Introduce _duplicate layer_ option
+
+#### To do
 - Introduce additional mask options
 - Introduce the option to generate a noise texture for each separate PBR channel, with tools to modify these as necessary
-- Use a more dynamic approach to introducing nodes into each layer
 - Introduce flexibility with regards to incorporating PBR Painter with manually developed shader node trees
 - Much more, depending on suggestions/feedback received...

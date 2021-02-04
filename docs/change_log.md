@@ -20,6 +20,8 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 
 #### Completed
 - Introduce _duplicate layer_ option
+- Introduce optional color ramp node when using a roughness, specular or metallic texture, for fine-tuning the texture (e.g. make a roughness
+texture more glossy)
 
 #### To do
 - Introduce additional mask options

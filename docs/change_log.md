@@ -18,16 +18,16 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 
 ## Roadmap
 
-#### Completed
+#### Completed (coming in v1.1)
 - Introduce _duplicate layer_ option
 - Introduce optional color ramp node when using a roughness, specular or metallic texture, for fine-tuning the texture (e.g. make a roughness
 texture more glossy)
-
-#### To do
 - Introduce additional mask options
-- Change naming of merged layer textures to be more specific (e.g. change from "Merged_Albedo" to "Suzanne_Albedo_4K", where "Suzanne" is the object name and
-"4K" is the specified resolution)
 - Introduce a __bake all__ button to be used for baking the current material textures _without_ having to use the __merge visible__ button.
 - Introduce the option to generate a noise texture for each separate PBR channel, with tools to modify these as necessary
+
+#### To do
+- Change naming of merged layer textures to be more specific (e.g. change from "Merged_Albedo" to "Suzanne_Albedo_4K", where "Suzanne" is the object name and
+"4K" is the specified resolution)
 - Introduce flexibility with regards to incorporating PBR Painter with manually developed shader node trees
 - Much more, depending on suggestions/feedback received...

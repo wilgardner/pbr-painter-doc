@@ -19,15 +19,18 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 ## Roadmap
 
 #### Completed (coming in v1.1)
-- Introduce _duplicate layer_ option
+- Introduce _duplicate layer_ button
 - Introduce optional color ramp node when using a roughness, specular or metallic texture, for fine-tuning the texture (e.g. make a roughness
 texture more glossy)
-- Introduce additional mask options
-- Introduce a __bake all__ button to be used for baking the current material textures _without_ having to use the __merge visible__ button.
-- Introduce the option to generate a noise texture for each separate PBR channel, with tools to modify these as necessary
-
-#### To do
+- Major code refactoring for better efficiency
+- Introduce additional mask options (procedural noise, voronoi, musgrave or wave)
+- Introduce a _bake all_ button to be used for baking the current material textures _without_ having to use the __merge visible__ button.
+- Introduce the option to generate a noise texture for each separate PBR channel (noise, voronoi, musgrave or wave), with tools to tune these as necessary
 - Change naming of merged layer textures to be more specific (e.g. change from "Merged_Albedo" to "Suzanne_Albedo_4K", where "Suzanne" is the object name and
 "4K" is the specified resolution)
+- Change some terminology in the UI (e.g. map -> texture) to be clearer
+- Change how normals are mixed (introduce a normal map into each layer, allowing 'normal strength' to be adjusted per layer)
+
+#### To do
 - Introduce flexibility with regards to incorporating PBR Painter with manually developed shader node trees
 - Much more, depending on suggestions/feedback received...

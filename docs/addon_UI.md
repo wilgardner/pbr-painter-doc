@@ -5,20 +5,20 @@ When there are no currently active PBR Layers on the material, the UI will look 
 
 ![Screenshot](img/ui_no_layers.png)
 
-Go ahead and click the "Add Layer" button to add a new layer:
+You can click the "Add Layer" button to add a new layer:
 
 ![Screenshot](img/ui_add_layer.png)
 
 Adding a new layer generates the following dialog box:
 
-![Screenshot](img/ui_add_layer_dialog1.png) 
+![Screenshot](img/ui_add_layer_dialog1.png)
 
-Here, you can select the layer type, either __multipass__ or __single pass__:
+Here, you can select the layer type, either __Multipass__ or __Single Pass__:
 
 ![Screenshot](img/ui_add_layer_dialog2.png)
 
 Briefly, __multipass__ layers are used to paint any combination of PBR texture channels _simultaneously_, whereas for __single pass__ you can paint each 
-channel separately, which may be necessary in some situations (more on this below).
+channel separately, which may be necessary in some situations (more on this later).
 
 If you select __multipass__ (which you will use most frequently), you need to select the _resolution_ and of the new layer. 
 This is the resolution of the mask you will be painting that will be used to perform the multipass PBR painting. You can also opt 
@@ -32,16 +32,16 @@ as you read through the remaining documentation.
 ### Multipass Layers
 
 As mentioned, __multipass__ layers provide almost all of the functionality of PBR Painter. With a __multipass__ layer, you can paint any combination of PBR Channels - either 
-using single values or imported texture maps - simultaneously onto your mesh, with a single brush stroke. 
+using single values, imported texture maps and/or procedural textures - simultaneously onto your mesh, with a single brush stroke. 
 
 For __multipass__ layers, you will be painting a _single_ mask that will be used to generate all of the PBR channels you have selected. This process is what enables
-the multipass painting functionality. For example, you could simultaenously paint an __albedo__ texture, a __roughness__ texture and a __normal__ texture, while setting
-a uniform __height__ value of, for example, 0.5. You can also opt to specify any other input to the Principled Shader to be included within the multipass setup.
+the multipass painting functionality. For example, you could simultaenously paint using an imported __albedo__ texture, a constant __roughness__ value of, for example, 0.2, 
+and a procedural __normal/bump__ texture. You can also opt to specify any other input to the Principled Shader to be included within the multipass setup.
 Again, this will become clearer later.
 
 ### Single Pass Layers
 
-For a __single pass__ layer, you can paint any combination of __albedo__, __metallic__, __roughness__, __normal__ or __height__ textures directly. The important distinction 
+For a __single pass__ layer, you can paint any combination of __albedo__, __metallic__, __roughness__, __normal__, __bump__ or __height__ textures directly. The important distinction 
 here is that the __single pass__ layer lets you paint these PBR channels separately within a single layer, meaning that they can occupy different areas on the mesh, and they
 can be non-uniform values (e.g. you can paint variations in roughness directly, whereas for __multipass__ layers the roughness is either a single value or a texture). These layers
 are therefore essentially the same as the internal texture paint system in Blender, although they have been adapted to be able to be included in PBR Painter's layered setup. One
@@ -55,18 +55,22 @@ Once you've added one or more layers, you will see the complete UI for the addon
 
 The following can be accessed in this main panel:
 
+- __Active material__: The active material for the selected object.
 - __List of active layers__: Shows all of the active PBR layers associated with the material, in order. That is, layers higher up on the list appear on top in the
 material.
 - __Layer type__: The type of layer, either __multipass__, __single pass__ or __merged__ (more on this later).
 - __Layer name__: The (modifiable) name of the currently selected layer, shown in the list.
-- __Toggle paint/erase__: Switch between painting and erasing the currently selected layer.
+- __Paint/erase__: Switch between painting and erasing the currently selected layer.
 - __Hide layer__: Hide the currently selected layer.
 - __New layer__: Add a new layer to the list. Note that the new layer will be added immediately above the currently selected layer.
 - __Delete layer__: Delete the currently selected layer. Note that up to 10 layers are stored in the __Deleted Layers__ panel (more on this later).
 - __Move layer__: Move the currently selected layer up or down in the list.
+- __Duplicate later__: Duplicate the currently selected layer.
 - __Merge visible__: Merge all visible layers (more on this later).
+- __Toggle texture autosaving__: Turn on/off autosaving of modified textures.
+- __Bake visible__: Bake the visible material to textures (more on this later).
 - __Save images__: Saves all modified masks to the .blend file. This is important to avoid any loss of work due to unexpected crashes etc.
 
-In addition to these tools, there are also 6 subpanels which constitute the remainder of the addon: __PBR Channels__, __ID Map__, __Masks__, 
-__Other Principled BSDF Inputs__ and __Deleted Layers__. The following sections in this documentation describe what is in these subpanels and 
-their various functionalities/purposes. __The following sections will therefore be most useful as a reference while you are using the addon.__
+In addition to these tools, there are also 6 subpanels which constitute the remainder of the addon: __PBR Channels__, __ID Map__, __Masks__, __Texture Mapping__,
+__Other Principled BSDF Inputs__, and __Deleted Layers__. The following sections in this documentation describe what is in these subpanels and 
+their various functionalities/purposes. __These sections will therefore be most useful as a reference while you are using the addon.__

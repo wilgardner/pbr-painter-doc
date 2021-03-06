@@ -14,45 +14,58 @@ Here you can select which of these channels you want to include in the multipass
 selected here will have an opacity of 0 for the layer. In other words, they will be given the value of whatever is underneath the
 painted area on the mesh. 
 
-The following shows all of the channels switched on, for demonstration purposes:
+Opening one of these subpanels reveals a checkbox, which is used to switch on the channel. For example, below shows the __roughness__
+panel opened:
 
 ![Screenshot](img/pbr_channels_multipass_2.png)
 
-__Note that the _layer blend_ option for each channel is a new addition to v1.0.4. This lets you change, for each channel, how the current
-layer is blended with the underlying texture.__
+Ticking this checkbox reveals the channel-specific interface, which is used to control all of the properties of the channel for the layer. Again,
+the example below is for the __roughness__ channel, but most channels are controlled using a similar interface:
 
-For the __albedo__ channel, you can either paint directly using the color of the brush or select _use constant albedo_, which will
-apply a constant color over the painter area for the layer, which you can then adjust. For the __metallic__, __roughness__, __normals__, __specular__
-and __height__ channels, you can select a single value that will be applied over the painted area. For the __height__ channel, you can
-also adjust the height _scale_ and _midlevel_.
+![Screenshot](img/pbr_channels_multipass_3.png)
+
+For the __albedo__ channel, you can either paint the color directly or opt to paint a constant value by selecting _constant albedo_. This will
+apply a constant color over the painted area for the layer, which you can then adjust. For the __metallic__, __roughness__, __normals__, __specular__
+and __displacement__ channels, you can select a single value that will be applied over the painted area. For the __normal__ channel, you can also select
+the _strength_ of the normals, while for the __displacement__ channel, you can adjust the displacement _scale_ and _midlevel_.
 
 You can also adjust the _opacity_ of each of these layers individually. An opacity of 0 is identical to not including the channel at all, and
 an opacity of 1 is completely opaque. 
 
-If __ambient occlusion__ (AO) is selected, you will immediately be prompted to select a texture for the channel. You can also change the
-AO strength here.
-
 You can also opt to import a map/texture for each channel, using the _use channel map_ checkbox. This will then let you add a texture to
-use for painting within that channel. For example, selecting _use albedo map_ shows the following:
+use for painting within that channel. For example, selecting _roughness texture_ shows the following:
 
-![Screenshot](img/pbr_channels_multipass_3.png)
+![Screenshot](img/pbr_channels_multipass_4.png)
+
+Once a texture is loaded, you may (if applicable for the channel type) also have the option of a color ramp, to fine tune the texture output:
+
+![Screenshot](img/pbr_channels_multipass_5.png)
+
+If __ambient occlusion__ (AO) is selected, you will immediately be prompted to select a texture for the channel. You can also change the
+AO strength here. AO is typically used with a corresponding __albedo__ texture.
 
 If you use a normal map/texture, you will also see a new checkbox appear next to _opacity_, called _Combine normals_:
 
-![Screenshot](img/pbr_channels_multipass_4.png)
+![Screenshot](img/pbr_channels_multipass_6.png)
 
 If selected, _combine normals_ will automatically combine the normals of the current layer with any normals underneath. The method used
 is mathematically-derived, so can be applied for multiple stacked layers to combine all normals accurately. Refer to the instructional
 video for a demonstration on painting with combined normals.
 
-The following shows an example PBR Channels subpanel setup using a __multipass__ layer, whereby a set of granite rock textures have been 
-imported for painting onto a Suzanne head:
+Finally, for each of these channels you can also use a __procedural texture__, which procedurally generates the texture for the channel based on
+the settings used. For example, the GIFs below show a __normal__ channel painted using two different types of __procedural textures__: a _noise_ texture (top)
+and a _voronoi_ texture (bottom):
 
-![Screenshot](img/pbr_channels_multipass_5.png)
+__Noise texture:__
+![Screenshot](img/pbr_channels_multipass_7.gif)
 
-And below is an example setup for painting moss on top of the granite rock layer, using __combined normals__ and a low height opacity:
+__Voronoi texture:__
+![Screenshot](img/pbr_channels_multipass_8.gif)
 
-![Screenshot](img/pbr_channels_multipass_6.png)
+As for the __normal texture__ option, you can also use _combine normals_ for __procedural textures__. This means that you can combine __procedural textures__ with
+other __procedural textures__, or even with imported textures! The possibilities are endless!
+
+![Screenshot](img/pbr_channels_multipass_9.gif)
 
 #### Single Pass Layer
 
@@ -105,16 +118,13 @@ to include similar colors in your selection.
 
 Once the ID map is applied and the color selected, with the appropriate threshold, painting will be restricted to only that region, e.g.:
 
-![Screenshot](img/id_map_4.png)
-
-Note that once an ID map has been opened/imported for any layer, it will be applied for every other layer automatically (once ID map is
-selected).
+![Screenshot](img/id_map_4.gif)
 
 The next panel to check out is the __masks__ panel, where you can add a variety of different masks to use for the layer.
 
 ## Masks
 
-In this subpanel, you can add a __alpha map__ and/or __procedural mask__ to the texture:
+In this subpanel, you can add a __alpha map__, a __geometric mask__ and/or __procedural mask__ to the texture:
 
 ![Screenshot](img/masks.png)
 
@@ -124,7 +134,7 @@ In the example below, a 'logo' alpha map has been used to paint rock over the to
 
 It is important to recognize that an alpha map can be any greyscale image, meaning that it is easy to make your own.
 
-If you select __procedural mask__, you will have the option of either a _curvature_ mask or a _normal direction_ mask:
+If you select __geometric mask__, you will have the option of either a _curvature_ mask or a _normal direction_ mask:
 
 ![Screenshot](img/masks_3.png)
 
@@ -133,26 +143,28 @@ Note that other options will be added with future versions of PBR Painter.
 As for the ID map, you can visualize these masks on the mesh with the checkbox shown, and you can adjust them as needed using the colorramp properties and/or 
 the normal direction interactive tool (for normal direction only):
 
-![Screenshot](img/masks_4.png)
-![Screenshot](img/masks_5.png)
+![Screenshot](img/masks_4.gif)
+![Screenshot](img/masks_5.gif)
 
 Note that any masks used will be combined/multiplied (and also multiplied with the ID map, if used). This gives fine control over different combinations of masks.
 
-
 ## Texture Mapping
 
-This panel allows you to change the __scale__, __location__ (in the _x_ and _y_ directions) and the __rotation__ of any imported PBR
+This panel allows you to change the __mapping type__ (either _UV_ or _Box_), __scale__, __location__ (in the _x_ and _y_ directions) and the __rotation__ of any imported PBR
 texture maps:
 
 ![Screenshot](img/texture_mapping.png)
 
 Note that if no maps are imported you will be prompted that this panel is not applicable.
 
-Play around with these values to get the mapping that works for you, then you are ready to check out the panel you will probably use most often: the __Layer Settings__ panel.
+Play around with these values to get the mapping that works for you. For example, _Box_ mapping is useful for blurring seams in the mesh, which can be achieved using the
+_seam blend_ tool:
+
+![Screenshot](img/texture_mapping_2.gif)
 
 If you have an _alpha map_ loaded, you will also see the option to use separate mapping for the alpha map:
 
-![Screenshot](img/texture_mapping_2.png)
+![Screenshot](img/texture_mapping_3.png)
 
 This is useful if you don't want your alpha map to be mapped in the same way as your imported textures for the material.
 
@@ -170,5 +182,5 @@ will trigger the __Merge Visible__ function to bake that value as an individual 
 
 ## Deleted Layers
 
-Finally, the last panel, the __Deleted Layers__ lets you recover up to 10 deleted layers and return them to the active layers list. This is useful if you change your mind or accidentally
+Finally, the last panel, the __Deleted Layers__ lets you recover up to 3 deleted layers and return them to the active layers list. This is useful if you change your mind or accidentally
 delete a layer and wish to recover it at a later point. Alternatively, layers can be permanently deleted from this panel, at which point they can no longer be recovered.

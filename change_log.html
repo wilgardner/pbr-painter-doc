@@ -64,7 +64,7 @@
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="merge_visible.html">Merge Visible</a>
+                    <li class="toctree-l1"><a class="reference internal" href="merge_visible.html">Merge/Bake Visible</a>
                     </li>
                 </ul>
                 <ul class="current">
@@ -72,15 +72,15 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#changelog">Changelog</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#compatible-with-blender-v291">Compatible with Blender v2.91:</a>
+    <li class="toctree-l3"><a class="reference internal" href="#compatible-with-blender-v283-290-291-and-292">Compatible with Blender v2.83, 2.90, 2.91 and 2.92:</a>
     </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#roadmap">Roadmap</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#completed-coming-in-v11">Completed (coming in v1.1)</a>
+    <li class="toctree-l3"><a class="reference internal" href="#completed">Completed</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#to-do">To do</a>
+    <li class="toctree-l3"><a class="reference internal" href="#to-do">To Do</a>
     </li>
         </ul>
     </li>
@@ -126,18 +126,31 @@
                 <h1 id="changelog-and-roadmap">Changelog and Roadmap</h1>
 <p><em>Please note that by purchasing PBR Painter you will have access to every update that is released, indefinitely and for no extra cost.</em></p>
 <h2 id="changelog">Changelog</h2>
-<h4 id="compatible-with-blender-v291">Compatible with Blender v2.91:</h4>
+<h4 id="compatible-with-blender-v283-290-291-and-292">Compatible with Blender v2.83, 2.90, 2.91 and 2.92:</h4>
 <ul>
-<li>v1.0.4:<ul>
-<li>Fixed bug that was occasionally causing an error when switching between <em>paint</em> and <em>erase</em>, or when adding a layer</li>
-<li>Introduced the option to change the <em>blend type</em> between layers, for each channel in a layer, as per video below:</li>
+<li>
+<p>v1.1.0:</p>
+<ul>
+<li>New option to paint a procedural texture for each separate PBR channel (noise, voronoi, musgrave or wave), with tools to tune/scale/rotate these as necessary</li>
+<li>Additional mask options (procedural noise, voronoi, musgrave or wave) that can be used in combination with all currently available masks</li>
+<li>New autosave feature which, when turned on, automatically saves modified textures periodically, to avoid accidentally losing work</li>
+<li>New duplicate layer button</li>
+<li>Optional color ramp node when using a roughness, specular or metallic texture, for fine-tuning the texture (e.g. make a roughness texture more glossy)</li>
+<li>Box mapping now available for imported textures, with access to a seam blend slider for creating seamless materials</li>
+<li>New bake button to be used for baking the current material textures without having to use the merge visible button</li>
+<li>Improved naming of baked textures to be more specific and streamlined</li>
+<li>Option to adjust normal strength for each layer individually</li>
+<li>Bump mapping available as an option in single pass layers</li>
+<li>New button to instantly invert any color ramp in the addon.</li>
 </ul>
 </li>
-</ul>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dMB1W2RppWw" frameborder="0" allow="accelerometer; autoplay; 
-clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<li>
+<p>v1.0.4:</p>
 <ul>
+<li>Fixed bug that was occasionally causing an error when switching between <em>paint</em> and <em>erase</em>, or when adding a layer</li>
+<li>Introduced the option to change the <em>blend type</em> between layers, for each channel in a layer</li>
+</ul>
+</li>
 <li>
 <p>v1.0.3:</p>
 <ul>
@@ -149,24 +162,24 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 </li>
 </ul>
 <h2 id="roadmap">Roadmap</h2>
-<h4 id="completed-coming-in-v11">Completed (coming in v1.1)</h4>
+<h4 id="completed">Completed</h4>
 <ul>
-<li>Introduce <em>duplicate layer</em> button</li>
-<li>Introduce optional color ramp node when using a roughness, specular or metallic texture, for fine-tuning the texture (e.g. make a roughness
-texture more glossy)</li>
-<li>Major code refactoring for better efficiency</li>
-<li>Introduce additional mask options (procedural noise, voronoi, musgrave or wave)</li>
-<li>Introduce a <em>bake all</em> button to be used for baking the current material textures <em>without</em> having to use the <strong>merge visible</strong> button.</li>
-<li>Introduce the option to generate a noise texture for each separate PBR channel (noise, voronoi, musgrave or wave), with tools to tune these as necessary</li>
-<li>Change naming of merged layer textures to be more specific (e.g. change from "Merged_Albedo" to "Suzanne_Albedo_4K", where "Suzanne" is the object name and
-"4K" is the specified resolution)</li>
-<li>Change some terminology in the UI (e.g. map -&gt; texture) to be clearer</li>
-<li>Change how normals are mixed (introduce a normal map into each layer, allowing 'normal strength' to be adjusted per layer)</li>
+<li>v2.0.0:<ul>
+<li>Major overhaul of addon for a huge boost to performance</li>
+<li>Restructure UI for a more intuitive, more user-friendly and less busy interface</li>
+<li>Introduce option for importing a height/bump map in the normal channel</li>
+<li>Introduce a brand new masking system, using layered system to build complex and highly-specific masks</li>
+<li>Introduce more options for each specific mask (which can individually be added to the layered setup)</li>
+<li>Introduce the option to use a custom layer, which lets you build your own layer from scratch using your own node setups, which can then be painted as a layer as per normal (important for advanced users who need highly specific node setups)</li>
+<li>Introduce copy/paste functions for procedural texture setups, for copying between channels and/or between layers</li>
+<li>Improve how deleted layers are stored for improved addon performance and efficiency</li>
 </ul>
-<h4 id="to-do">To do</h4>
+</li>
+</ul>
+<h4 id="to-do">To Do</h4>
 <ul>
-<li>Introduce flexibility with regards to incorporating PBR Painter with manually developed shader node trees</li>
-<li>Much more, depending on suggestions/feedback received...</li>
+<li>Introduce automated external texture saving after baking using a user-defined file subdirectory</li>
+<li>Much more, depending on user feedback (keep it coming!)...</li>
 </ul>
               
             </div>
@@ -178,7 +191,7 @@ texture more glossy)</li>
         <a href="final_note.html" class="btn btn-neutral float-right" title="A Final Note">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="merge_visible.html" class="btn btn-neutral" title="Merge Visible"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="merge_visible.html" class="btn btn-neutral" title="Merge/Bake Visible"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   

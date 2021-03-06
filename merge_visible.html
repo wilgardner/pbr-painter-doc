@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Merge Visible - PBR Painter</title>
+  <title>Merge/Bake Visible - PBR Painter</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Merge Visible";
+    var mkdocs_page_name = "Merge/Bake Visible";
     var mkdocs_page_input_path = "merge_visible.md";
     var mkdocs_page_url = null;
   </script>
@@ -64,7 +64,7 @@
                     </li>
                 </ul>
                 <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="merge_visible.html">Merge Visible</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="merge_visible.html">Merge/Bake Visible</a>
     <ul class="current">
     </ul>
                     </li>
@@ -98,7 +98,7 @@
     
       
     
-    <li>Merge Visible</li>
+    <li>Merge/Bake Visible</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -109,22 +109,25 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="merge-visible">Merge Visible</h1>
-<p>The <strong>merge visible</strong> tool, located in the main UI panel, creates a merged layer using all of the <em>visible</em> (i.e. not hidden) layers in the PBR layers list: </p>
+                <h1 id="mergebake-visible">Merge/Bake Visible</h1>
+<p>The <strong>merge visible</strong> and <strong>bake visible</strong> tools, located in the main UI panel, automatically bake the visible material to a set of textures.</p>
 <p><img alt="Screenshot" src="img/merge_visible.png" /></p>
-<p>Once layers are merged, the merged layer will replace all of the visible layers and will be locked at the bottom of the layer list. It is therefore advised that you only use this tool when
-you are entirely happy with the layers being merged and you won't need to make any changes later on.</p>
-<p>When you select merge visible, you will see the following popup:</p>
+<p>Both use the same algorithm, which automatically detects which PBR channels (albedo, roughness, normals etc) need to be baked in order to
+reproduce the material exactly. In other words, the algorithm will detect which channels vary between layers, and therefore require a baked texture.
+All other channels will simply be given the constant value associated with the material.</p>
+<p>The difference between <strong>merge visible</strong> and <strong>bake visible</strong> is that <strong>merge visible</strong> creates a merged layer using all of the <em>visible</em> (i.e. not hidden) layers in the PBR layers list,
+in addition to baking the textures. Once layers are merged, the merged layer will replace all of the visible layers and will be locked at the bottom of the layer list. It is therefore advised 
+that you only use this tool when you are entirely happy with the layers being merged and you won't need to make any changes later on.</p>
+<p>When you select <strong>merge visible</strong>, you will see the following popup:</p>
 <p><img alt="Screenshot" src="img/merge_visible_2.png" /></p>
-<p>Essentially, <strong>merge visible</strong> is a <strong>smart baking</strong> tool that automatically detects which PBR components (albedo, roughness, normals etc) need to be baked in order to
-reproduce the material exactly. In other words, the algorithm will detect which components to the texture vary between layers, and therefore require a map.
-All other components will simply be given the constant value associated with the material.</p>
 <p>Because the merged layer cannot be modified, it is advised that you select <strong>Backup Material</strong> (on by default) when merging, as this will backup the current material in
-case you need to change anything later. Note that this backed up material will dissapear when restarting Blender, however the individual layers will also be stored in the 
+case you need to change anything later. Note that this backed up material will dissapear when restarting Blender, however up to 5 of the individual layers will also be stored in the 
 <strong>Deleted Layers</strong> panel, if you need to access them that way.</p>
 <p>As per the image above, you can specify the resolution of the baked textures. This is 4k by default, but you may need to increase this if you have high resolution starting
 textures and/or you use a high scale value in the mapping. If the resolution is too low, you may lose detail/quality in the merged layer, so you can repeat the process with
 a higher resolution (assuming you have backed up the material).</p>
+<p>If you are using the <strong>displacement</strong> channel in any of your layers, you will also be asked whether you want to <em>bake displacement to normals</em>. This is off by default, but when
+switched on, converts any displacement to a normal map, and combines this with whatever other normals are present.</p>
 <p>As a final note, you will be prompted to open the <strong>system console</strong> prior to clicking <strong>ok</strong>. This will let you monitor the progress of the layer merging/baking. Otherwise,
 Blender will merely freeze until the algorithm is completed.</p>
               

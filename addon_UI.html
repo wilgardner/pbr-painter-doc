@@ -76,7 +76,7 @@
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="merge_visible.html">Merge Visible</a>
+                    <li class="toctree-l1"><a class="reference internal" href="merge_visible.html">Merge/Bake Visible</a>
                     </li>
                 </ul>
                 <ul>
@@ -123,14 +123,14 @@
 <h2 id="the-ui-without-layers">The UI without Layers</h2>
 <p>When there are no currently active PBR Layers on the material, the UI will look like this and you will be prompted to add a new layer to get started:</p>
 <p><img alt="Screenshot" src="img/ui_no_layers.png" /></p>
-<p>Go ahead and click the "Add Layer" button to add a new layer:</p>
+<p>You can click the "Add Layer" button to add a new layer:</p>
 <p><img alt="Screenshot" src="img/ui_add_layer.png" /></p>
 <p>Adding a new layer generates the following dialog box:</p>
-<p><img alt="Screenshot" src="img/ui_add_layer_dialog1.png" /> </p>
-<p>Here, you can select the layer type, either <strong>multipass</strong> or <strong>single pass</strong>:</p>
+<p><img alt="Screenshot" src="img/ui_add_layer_dialog1.png" /></p>
+<p>Here, you can select the layer type, either <strong>Multipass</strong> or <strong>Single Pass</strong>:</p>
 <p><img alt="Screenshot" src="img/ui_add_layer_dialog2.png" /></p>
 <p>Briefly, <strong>multipass</strong> layers are used to paint any combination of PBR texture channels <em>simultaneously</em>, whereas for <strong>single pass</strong> you can paint each 
-channel separately, which may be necessary in some situations (more on this below).</p>
+channel separately, which may be necessary in some situations (more on this later).</p>
 <p>If you select <strong>multipass</strong> (which you will use most frequently), you need to select the <em>resolution</em> and of the new layer. 
 This is the resolution of the mask you will be painting that will be used to perform the multipass PBR painting. You can also opt 
 for 32 bit floating point depth, as opposed to 16 bit by default.</p>
@@ -139,13 +139,13 @@ for 32 bit floating point depth, as opposed to 16 bit by default.</p>
 as you read through the remaining documentation.</p>
 <h3 id="multipass-layers">Multipass Layers</h3>
 <p>As mentioned, <strong>multipass</strong> layers provide almost all of the functionality of PBR Painter. With a <strong>multipass</strong> layer, you can paint any combination of PBR Channels - either 
-using single values or imported texture maps - simultaneously onto your mesh, with a single brush stroke. </p>
+using single values, imported texture maps and/or procedural textures - simultaneously onto your mesh, with a single brush stroke. </p>
 <p>For <strong>multipass</strong> layers, you will be painting a <em>single</em> mask that will be used to generate all of the PBR channels you have selected. This process is what enables
-the multipass painting functionality. For example, you could simultaenously paint an <strong>albedo</strong> texture, a <strong>roughness</strong> texture and a <strong>normal</strong> texture, while setting
-a uniform <strong>height</strong> value of, for example, 0.5. You can also opt to specify any other input to the Principled Shader to be included within the multipass setup.
+the multipass painting functionality. For example, you could simultaenously paint using an imported <strong>albedo</strong> texture, a constant <strong>roughness</strong> value of, for example, 0.2, 
+and a procedural <strong>normal/bump</strong> texture. You can also opt to specify any other input to the Principled Shader to be included within the multipass setup.
 Again, this will become clearer later.</p>
 <h3 id="single-pass-layers">Single Pass Layers</h3>
-<p>For a <strong>single pass</strong> layer, you can paint any combination of <strong>albedo</strong>, <strong>metallic</strong>, <strong>roughness</strong>, <strong>normal</strong> or <strong>height</strong> textures directly. The important distinction 
+<p>For a <strong>single pass</strong> layer, you can paint any combination of <strong>albedo</strong>, <strong>metallic</strong>, <strong>roughness</strong>, <strong>normal</strong>, <strong>bump</strong> or <strong>height</strong> textures directly. The important distinction 
 here is that the <strong>single pass</strong> layer lets you paint these PBR channels separately within a single layer, meaning that they can occupy different areas on the mesh, and they
 can be non-uniform values (e.g. you can paint variations in roughness directly, whereas for <strong>multipass</strong> layers the roughness is either a single value or a texture). These layers
 are therefore essentially the same as the internal texture paint system in Blender, although they have been adapted to be able to be included in PBR Painter's layered setup. One
@@ -155,21 +155,25 @@ important application of <strong>single pass</strong> layers is painting over te
 <p><img alt="Screenshot" src="img/ui_full.png" /></p>
 <p>The following can be accessed in this main panel:</p>
 <ul>
+<li><strong>Active material</strong>: The active material for the selected object.</li>
 <li><strong>List of active layers</strong>: Shows all of the active PBR layers associated with the material, in order. That is, layers higher up on the list appear on top in the
 material.</li>
 <li><strong>Layer type</strong>: The type of layer, either <strong>multipass</strong>, <strong>single pass</strong> or <strong>merged</strong> (more on this later).</li>
 <li><strong>Layer name</strong>: The (modifiable) name of the currently selected layer, shown in the list.</li>
-<li><strong>Toggle paint/erase</strong>: Switch between painting and erasing the currently selected layer.</li>
+<li><strong>Paint/erase</strong>: Switch between painting and erasing the currently selected layer.</li>
 <li><strong>Hide layer</strong>: Hide the currently selected layer.</li>
 <li><strong>New layer</strong>: Add a new layer to the list. Note that the new layer will be added immediately above the currently selected layer.</li>
 <li><strong>Delete layer</strong>: Delete the currently selected layer. Note that up to 10 layers are stored in the <strong>Deleted Layers</strong> panel (more on this later).</li>
 <li><strong>Move layer</strong>: Move the currently selected layer up or down in the list.</li>
+<li><strong>Duplicate later</strong>: Duplicate the currently selected layer.</li>
 <li><strong>Merge visible</strong>: Merge all visible layers (more on this later).</li>
+<li><strong>Toggle texture autosaving</strong>: Turn on/off autosaving of modified textures.</li>
+<li><strong>Bake visible</strong>: Bake the visible material to textures (more on this later).</li>
 <li><strong>Save images</strong>: Saves all modified masks to the .blend file. This is important to avoid any loss of work due to unexpected crashes etc.</li>
 </ul>
-<p>In addition to these tools, there are also 6 subpanels which constitute the remainder of the addon: <strong>PBR Channels</strong>, <strong>ID Map</strong>, <strong>Masks</strong>, 
-<strong>Other Principled BSDF Inputs</strong> and <strong>Deleted Layers</strong>. The following sections in this documentation describe what is in these subpanels and 
-their various functionalities/purposes. <strong>The following sections will therefore be most useful as a reference while you are using the addon.</strong></p>
+<p>In addition to these tools, there are also 6 subpanels which constitute the remainder of the addon: <strong>PBR Channels</strong>, <strong>ID Map</strong>, <strong>Masks</strong>, <strong>Texture Mapping</strong>,
+<strong>Other Principled BSDF Inputs</strong>, and <strong>Deleted Layers</strong>. The following sections in this documentation describe what is in these subpanels and 
+their various functionalities/purposes. <strong>These sections will therefore be most useful as a reference while you are using the addon.</strong></p>
               
             </div>
           </div>

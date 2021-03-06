@@ -84,7 +84,7 @@
                     </li>
                 </ul>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="merge_visible.html">Merge Visible</a>
+                    <li class="toctree-l1"><a class="reference internal" href="merge_visible.html">Merge/Bake Visible</a>
                     </li>
                 </ul>
                 <ul>
@@ -136,31 +136,40 @@
 <p>Here you can select which of these channels you want to include in the multipass setup for the layer. Any channels that are not
 selected here will have an opacity of 0 for the layer. In other words, they will be given the value of whatever is underneath the
 painted area on the mesh. </p>
-<p>The following shows all of the channels switched on, for demonstration purposes:</p>
+<p>Opening one of these subpanels reveals a checkbox, which is used to switch on the channel. For example, below shows the <strong>roughness</strong>
+panel opened:</p>
 <p><img alt="Screenshot" src="img/pbr_channels_multipass_2.png" /></p>
-<p><strong>Note that the <em>layer blend</em> option for each channel is a new addition to v1.0.4. This lets you change, for each channel, how the current
-layer is blended with the underlying texture.</strong></p>
-<p>For the <strong>albedo</strong> channel, you can either paint directly using the color of the brush or select <em>use constant albedo</em>, which will
-apply a constant color over the painter area for the layer, which you can then adjust. For the <strong>metallic</strong>, <strong>roughness</strong>, <strong>normals</strong>, <strong>specular</strong>
-and <strong>height</strong> channels, you can select a single value that will be applied over the painted area. For the <strong>height</strong> channel, you can
-also adjust the height <em>scale</em> and <em>midlevel</em>.</p>
+<p>Ticking this checkbox reveals the channel-specific interface, which is used to control all of the properties of the channel for the layer. Again,
+the example below is for the <strong>roughness</strong> channel, but most channels are controlled using a similar interface:</p>
+<p><img alt="Screenshot" src="img/pbr_channels_multipass_3.png" /></p>
+<p>For the <strong>albedo</strong> channel, you can either paint the color directly or opt to paint a constant value by selecting <em>constant albedo</em>. This will
+apply a constant color over the painted area for the layer, which you can then adjust. For the <strong>metallic</strong>, <strong>roughness</strong>, <strong>normals</strong>, <strong>specular</strong>
+and <strong>displacement</strong> channels, you can select a single value that will be applied over the painted area. For the <strong>normal</strong> channel, you can also select
+the <em>strength</em> of the normals, while for the <strong>displacement</strong> channel, you can adjust the displacement <em>scale</em> and <em>midlevel</em>.</p>
 <p>You can also adjust the <em>opacity</em> of each of these layers individually. An opacity of 0 is identical to not including the channel at all, and
 an opacity of 1 is completely opaque. </p>
-<p>If <strong>ambient occlusion</strong> (AO) is selected, you will immediately be prompted to select a texture for the channel. You can also change the
-AO strength here.</p>
 <p>You can also opt to import a map/texture for each channel, using the <em>use channel map</em> checkbox. This will then let you add a texture to
-use for painting within that channel. For example, selecting <em>use albedo map</em> shows the following:</p>
-<p><img alt="Screenshot" src="img/pbr_channels_multipass_3.png" /></p>
-<p>If you use a normal map/texture, you will also see a new checkbox appear next to <em>opacity</em>, called <em>Combine normals</em>:</p>
+use for painting within that channel. For example, selecting <em>roughness texture</em> shows the following:</p>
 <p><img alt="Screenshot" src="img/pbr_channels_multipass_4.png" /></p>
+<p>Once a texture is loaded, you may (if applicable for the channel type) also have the option of a color ramp, to fine tune the texture output:</p>
+<p><img alt="Screenshot" src="img/pbr_channels_multipass_5.png" /></p>
+<p>If <strong>ambient occlusion</strong> (AO) is selected, you will immediately be prompted to select a texture for the channel. You can also change the
+AO strength here. AO is typically used with a corresponding <strong>albedo</strong> texture.</p>
+<p>If you use a normal map/texture, you will also see a new checkbox appear next to <em>opacity</em>, called <em>Combine normals</em>:</p>
+<p><img alt="Screenshot" src="img/pbr_channels_multipass_6.png" /></p>
 <p>If selected, <em>combine normals</em> will automatically combine the normals of the current layer with any normals underneath. The method used
 is mathematically-derived, so can be applied for multiple stacked layers to combine all normals accurately. Refer to the instructional
 video for a demonstration on painting with combined normals.</p>
-<p>The following shows an example PBR Channels subpanel setup using a <strong>multipass</strong> layer, whereby a set of granite rock textures have been 
-imported for painting onto a Suzanne head:</p>
-<p><img alt="Screenshot" src="img/pbr_channels_multipass_5.png" /></p>
-<p>And below is an example setup for painting moss on top of the granite rock layer, using <strong>combined normals</strong> and a low height opacity:</p>
-<p><img alt="Screenshot" src="img/pbr_channels_multipass_6.png" /></p>
+<p>Finally, for each of these channels you can also use a <strong>procedural texture</strong>, which procedurally generates the texture for the channel based on
+the settings used. For example, the GIFs below show a <strong>normal</strong> channel painted using two different types of <strong>procedural textures</strong>: a <em>noise</em> texture (top)
+and a <em>voronoi</em> texture (bottom):</p>
+<p><strong>Noise texture:</strong>
+<img alt="Screenshot" src="img/pbr_channels_multipass_7.gif" /></p>
+<p><strong>Voronoi texture:</strong>
+<img alt="Screenshot" src="img/pbr_channels_multipass_8.gif" /></p>
+<p>As for the <strong>normal texture</strong> option, you can also use <em>combine normals</em> for <strong>procedural textures</strong>. This means that you can combine <strong>procedural textures</strong> with
+other <strong>procedural textures</strong>, or even with imported textures! The possibilities are endless!</p>
+<p><img alt="Screenshot" src="img/pbr_channels_multipass_9.gif" /></p>
 <h4 id="single-pass-layer">Single Pass Layer</h4>
 <p>A <strong>single pass</strong> layer lets you paint individual PBR channels one at a time, much like how Blender's internal texture painting system works. However,
 the main difference is that the <strong>single pass</strong> layer is embedded within PBR Painter, and therefore works within the layer-based system.</p>
@@ -190,32 +199,32 @@ eyedropper tool:</p>
 <p>With the color selected, you can increase the <em>color threshold</em> value if there is an issue with the color matching, or if you want
 to include similar colors in your selection.</p>
 <p>Once the ID map is applied and the color selected, with the appropriate threshold, painting will be restricted to only that region, e.g.:</p>
-<p><img alt="Screenshot" src="img/id_map_4.png" /></p>
-<p>Note that once an ID map has been opened/imported for any layer, it will be applied for every other layer automatically (once ID map is
-selected).</p>
+<p><img alt="Screenshot" src="img/id_map_4.gif" /></p>
 <p>The next panel to check out is the <strong>masks</strong> panel, where you can add a variety of different masks to use for the layer.</p>
 <h2 id="masks">Masks</h2>
-<p>In this subpanel, you can add a <strong>alpha map</strong> and/or <strong>procedural mask</strong> to the texture:</p>
+<p>In this subpanel, you can add a <strong>alpha map</strong>, a <strong>geometric mask</strong> and/or <strong>procedural mask</strong> to the texture:</p>
 <p><img alt="Screenshot" src="img/masks.png" /></p>
 <p>In the example below, a 'logo' alpha map has been used to paint rock over the top of a dirt background:</p>
 <p><img alt="Screenshot" src="img/masks_2.png" /></p>
 <p>It is important to recognize that an alpha map can be any greyscale image, meaning that it is easy to make your own.</p>
-<p>If you select <strong>procedural mask</strong>, you will have the option of either a <em>curvature</em> mask or a <em>normal direction</em> mask:</p>
+<p>If you select <strong>geometric mask</strong>, you will have the option of either a <em>curvature</em> mask or a <em>normal direction</em> mask:</p>
 <p><img alt="Screenshot" src="img/masks_3.png" /></p>
 <p>Note that other options will be added with future versions of PBR Painter. </p>
 <p>As for the ID map, you can visualize these masks on the mesh with the checkbox shown, and you can adjust them as needed using the colorramp properties and/or 
 the normal direction interactive tool (for normal direction only):</p>
-<p><img alt="Screenshot" src="img/masks_4.png" />
-<img alt="Screenshot" src="img/masks_5.png" /></p>
+<p><img alt="Screenshot" src="img/masks_4.gif" />
+<img alt="Screenshot" src="img/masks_5.gif" /></p>
 <p>Note that any masks used will be combined/multiplied (and also multiplied with the ID map, if used). This gives fine control over different combinations of masks.</p>
 <h2 id="texture-mapping">Texture Mapping</h2>
-<p>This panel allows you to change the <strong>scale</strong>, <strong>location</strong> (in the <em>x</em> and <em>y</em> directions) and the <strong>rotation</strong> of any imported PBR
+<p>This panel allows you to change the <strong>mapping type</strong> (either <em>UV</em> or <em>Box</em>), <strong>scale</strong>, <strong>location</strong> (in the <em>x</em> and <em>y</em> directions) and the <strong>rotation</strong> of any imported PBR
 texture maps:</p>
 <p><img alt="Screenshot" src="img/texture_mapping.png" /></p>
 <p>Note that if no maps are imported you will be prompted that this panel is not applicable.</p>
-<p>Play around with these values to get the mapping that works for you, then you are ready to check out the panel you will probably use most often: the <strong>Layer Settings</strong> panel.</p>
+<p>Play around with these values to get the mapping that works for you. For example, <em>Box</em> mapping is useful for blurring seams in the mesh, which can be achieved using the
+<em>seam blend</em> tool:</p>
+<p><img alt="Screenshot" src="img/texture_mapping_2.gif" /></p>
 <p>If you have an <em>alpha map</em> loaded, you will also see the option to use separate mapping for the alpha map:</p>
-<p><img alt="Screenshot" src="img/texture_mapping_2.png" /></p>
+<p><img alt="Screenshot" src="img/texture_mapping_3.png" /></p>
 <p>This is useful if you don't want your alpha map to be mapped in the same way as your imported textures for the material.</p>
 <h2 id="other-principled-bsdf-inputs">Other Principled BSDF Inputs</h2>
 <p>Here you will find all of the other inputs to the Principled Shader, which can be modified as necessary. Note that you can also change the opacities of each input for the layer,
@@ -225,7 +234,7 @@ as per the previous section:</p>
 <p>In many cases, these values can remain unchanged, however there are certain materials that will require them to be modified. Note that selecting any channel
 will trigger the <strong>Merge Visible</strong> function to bake that value as an individual map, as is explained later.</p>
 <h2 id="deleted-layers">Deleted Layers</h2>
-<p>Finally, the last panel, the <strong>Deleted Layers</strong> lets you recover up to 10 deleted layers and return them to the active layers list. This is useful if you change your mind or accidentally
+<p>Finally, the last panel, the <strong>Deleted Layers</strong> lets you recover up to 3 deleted layers and return them to the active layers list. This is useful if you change your mind or accidentally
 delete a layer and wish to recover it at a later point. Alternatively, layers can be permanently deleted from this panel, at which point they can no longer be recovered.</p>
               
             </div>
@@ -234,7 +243,7 @@ delete a layer and wish to recover it at a later point. Alternatively, layers ca
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="merge_visible.html" class="btn btn-neutral float-right" title="Merge Visible">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="merge_visible.html" class="btn btn-neutral float-right" title="Merge/Bake Visible">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="addon_UI.html" class="btn btn-neutral" title="Understanding the Main UI Panel"><span class="icon icon-circle-arrow-left"></span> Previous</a>
